@@ -1,0 +1,30 @@
+vim.keymap.set('n', '<leader>qq', '<cmd>qa<CR>', { desc = 'Quit Neovim', silent = true })
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<cmd>w<CR><cmd>echo ""<CR>', { desc = 'Save file', silent = true })
+vim.keymap.set('n', '<leader>l', '<cmd>Lazy<CR>', { desc = 'Open Lazy', silent = true })
+vim.keymap.set('n', '<leader>m', '<cmd>Mason<CR>', { desc = 'Opens Mason', silent = true })
+
+vim.keymap.set('n', '<A-j>', '<cmd>m .+1<CR>==', { desc = 'Move line down', silent = true })
+vim.keymap.set('n', '<A-k>', '<cmd>m .-2<CR>==', { desc = 'Move line up', silent = true })
+vim.keymap.set('i', '<A-j>', '<Esc><cmd>m .+1<CR>==gi', { desc = 'Move line down', silent = true })
+vim.keymap.set('i', '<A-k>', '<Esc><cmd>m .-2<CR>==gi', { desc = 'Move line up', silent = true })
+vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down', silent = true })
+vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up', silent = true })
+
+vim.keymap.set('n', '<A-h>', 'b', { desc = 'Move cursor word left', silent = true })
+vim.keymap.set('n', '<A-l>', 'w', { desc = 'Move cursor word right', silent = true })
+vim.keymap.set('i', '<A-h>', '<C-o>b', { desc = 'Move cursor word left', silent = true })
+vim.keymap.set('i', '<A-l>', '<C-o>w', { desc = 'Move cursor word right', silent = true })
+vim.keymap.set('v', '<A-h>', 'b', { desc = 'Move cursor word left', silent = true })
+vim.keymap.set('v', '<A-l>', 'w', { desc = 'Move cursor word right', silent = true })
+
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+vim.keymap.set('n', '<leader>zf', 'za', { desc = 'Toggle fold under cursor' })
+vim.keymap.set('n', '<leader>zc', 'zM', { desc = 'Close all folds' })
+vim.keymap.set('n', '<leader>zo', 'zR', { desc = 'Open all folds' })
