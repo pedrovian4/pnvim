@@ -552,7 +552,6 @@ return {
       'prettier',
       'phpcbf',
       'php-cs-fixer',
-      'typescript-language-server',
     })
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -562,33 +561,12 @@ return {
       automatic_installation = false,
       handlers = {
         function(server_name)
-          if server_name == 'tsserver' then
-            return
-          end
-
           local server = servers[server_name] or {}
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,
       },
     }
-
-    vim.api.nvim_create_autocmd('FileType', {
-      pattern = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
-      callback = function()
-        if not vim.lsp.get_active_clients({ name = 'tsserver' })[1] then
-          require('lspconfig').tsserver.setup {
-            capabilities = capabilities,
-            init_options = {
-              preferences = {
-                includeCompletionsWithSnippetText = true,
-                includeCompletionsForImportStatements = true,
-              },
-            },
-          }
-        end
-      end,
-    })
 
     vim.api.nvim_create_autocmd('FileType', {
       pattern = 'php',
